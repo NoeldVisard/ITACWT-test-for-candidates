@@ -40,8 +40,8 @@ class PurchaseController extends AbstractController
             return $this->json(['errors' => ['text' => 'Product does not exist']], Response::HTTP_BAD_REQUEST);
         }
 
+        $price = $this->productService->getPurchasePrice($jsonData, $product);
 
-
-        return new Response(null, Response::HTTP_OK);
+        return new Response($price, Response::HTTP_OK);
     }
 }
