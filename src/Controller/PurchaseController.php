@@ -3,6 +3,7 @@
 namespace App\Controller;
 
 use App\Service\DataValidationService;
+use App\Service\ProductService;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
@@ -11,10 +12,15 @@ use Symfony\Component\Routing\Annotation\Route;
 class PurchaseController extends AbstractController
 {
     private DataValidationService $dataValidationService;
+    private ProductService $productService;
 
-    public function __construct(DataValidationService $dataValidationService)
+    public function __construct(
+        DataValidationService $dataValidationService,
+        ProductService $productService
+    )
     {
         $this->dataValidationService = $dataValidationService;
+        $this->productService = $productService;
     }
 
     #[Route("/calculate-price", methods: ["POST"])]
@@ -27,6 +33,14 @@ class PurchaseController extends AbstractController
         if (!empty($errors)) {
             return $this->json(['errors' => $errors], Response::HTTP_BAD_REQUEST);
         }
+
+        $product = $this->productService->getProduct($jsonData['product']);
+
+        if (empty($product)) {
+            return $this->json(['errors' => ['text' => 'Product does not exist']], Response::HTTP_BAD_REQUEST);
+        }
+
+
 
         return new Response(null, Response::HTTP_OK);
     }
