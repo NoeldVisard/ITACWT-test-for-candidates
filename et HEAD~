@@ -1,0 +1,35 @@
+[33mcommit 4b6adca3c4a6c4539905e6ed85b9bcc7317d0cd1[m[33m ([m[1;36mHEAD -> [m[1;32mmain[m[33m)[m
+Author: rodion.karimov <rodion.karimov@tattelecom.digital>
+Date:   Sat Jan 20 19:45:37 2024 +0300
+
+    TST-6 | Calculation price endpoint: validator fix
+
+[33mcommit 1573cb78a952e596eccdc862f6de3bf91555f064[m[33m ([m[1;31morigin/main[m[33m)[m
+Author: rodion.karimov <rodion.karimov@tattelecom.digital>
+Date:   Wed Jan 17 23:34:23 2024 +0300
+
+    TST-5 | Calculation price endpoint: data validation
+
+[33mcommit a35dff1bc950bf2434eeed6b7b85141eb56432ab[m
+Author: rodion.karimov <rodion.karimov@tattelecom.digital>
+Date:   Thu Jan 11 21:30:47 2024 +0300
+
+    TST-4 | Install Symfony Validator
+
+[33mcommit 1b081bf85fd6ef082d751bb69ad9e7ac5bf5eb4a[m
+Author: rodion.karimov <rodion.karimov@tattelecom.digital>
+Date:   Sun Nov 26 22:12:40 2023 +0300
+
+    TST-3 | Install base files for test task
+
+[33mcommit 3ba4d45b5a9f6eb8ba7c7d868725dc9af3cc5f90[m
+Author: rodion.karimov <rodion.karimov@tattelecom.digital>
+Date:   Sun Nov 26 22:08:44 2023 +0300
+
+    TST-2 | Install annotations, twig requirements
+
+[33mcommit 3e72878d6552a1d4185dc1c11574fe3d9a8c3258[m
+Author: rodion.karimov <rodion.karimov@tattelecom.digital>
+Date:   Thu Nov 23 21:07:10 2023 +0300
+
+    TST-1 | Initialize project
