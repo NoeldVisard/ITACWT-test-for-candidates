@@ -23,9 +23,11 @@ class CalculatePriceValidator
                 ]),
             ],
             'couponCode' => [
-                new Assert\Regex([
-                    'pattern' => '/^D(I)?\d+$/',
-                    'message' => 'Invalid couponCode format. It should be "DX" or "DIX" where X is any number.'
+                new Assert\Optional([
+                    new Assert\Regex([
+                        'pattern' => '/^D(I)?\d+$/',
+                        'message' => 'Invalid couponCode format. It should be "DX" or "DIX" where X is any number.'
+                    ])
                 ])
             ]
         ];
