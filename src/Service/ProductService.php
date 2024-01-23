@@ -2,6 +2,9 @@
 
 namespace App\Service;
 
+use App\PaymentProcessor\PaymentProcessorWrapper;
+use App\PaymentProcessor\PaypalPaymentProcessor;
+use App\PaymentProcessor\StripePaymentProcessor;
 use App\Repository\ProductRepository;
 
 class ProductService
@@ -29,6 +32,22 @@ class ProductService
         $tax = $this->getTax($data['taxNumber']);
 
         return $this->getPrice($product['price'], $discount, $tax);
+    }
+
+    public function purchase($price, $paymentProcessor): bool|array
+    {
+        $paymentProcessorWrapper = new PaymentProcessorWrapper(
+            new PaypalPaymentProcessor(),
+            new StripePaymentProcessor()
+        );
+
+        $result = $paymentProcessorWrapper->processPayment($price, $paymentProcessor);
+
+        if (!$result) {
+            return ['errors' => ['text' => 'Payment process failed.']];
+        }
+
+        return true;
     }
 
     private function getTax(string $taxNumber): ?float
