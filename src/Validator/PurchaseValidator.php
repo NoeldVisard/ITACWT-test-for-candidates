@@ -4,7 +4,7 @@ namespace App\Validator;
 
 use Symfony\Component\Validator\Constraints as Assert;
 
-class PurchaseValidator
+class PurchaseValidator implements ValidatorInterface
 {
     public static function getConstraints(): array
     {

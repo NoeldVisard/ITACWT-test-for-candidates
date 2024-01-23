@@ -4,6 +4,7 @@ namespace App\Controller;
 
 use App\Service\DataValidationService;
 use App\Service\ProductService;
+use App\Validator\CalculatePriceValidator;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
@@ -28,7 +29,7 @@ class PurchaseController extends AbstractController
     {
         $jsonData = json_decode($request->getContent(), true);
 
-        $errors = $this->dataValidationService->validateData($jsonData);
+        $errors = $this->dataValidationService->validateData($jsonData, new CalculatePriceValidator());
 
         if (!empty($errors)) {
             return $this->json(['errors' => $errors], Response::HTTP_BAD_REQUEST);
